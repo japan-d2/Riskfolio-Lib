@@ -1271,6 +1271,11 @@ class Portfolio(object):
 
         """
 
+        # Check arguments
+        if obj == 'Double_Utility' :
+            assert len(l) == 2, """
+                'Double Utility Object selected but lenght of Lambda is not 2'
+            """
         # General model Variables
 
         mu = None
@@ -2088,6 +2093,8 @@ class Portfolio(object):
             objective = cp.Minimize(risk * 1000)
         elif obj == "Utility":
             objective = cp.Maximize(ret - l * risk)
+        elif obj == "Double_Utility":
+            objective = cp.Maximize(ret - l[0] * risk - l[1] * risk1)
         elif obj == "MaxRet":
             objective = cp.Maximize(ret * 1000)
 
