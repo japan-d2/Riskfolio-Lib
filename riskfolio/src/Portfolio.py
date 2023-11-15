@@ -2095,6 +2095,7 @@ class Portfolio(object):
             objective = cp.Maximize(ret - l * risk)
         elif obj == "Double_Utility":
             objective = cp.Maximize(ret - l[0] * risk - l[1] * risk1)
+            constraints += devconstraints
         elif obj == "MaxRet":
             objective = cp.Maximize(ret * 1000)
 
